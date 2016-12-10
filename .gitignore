@@ -1,0 +1,8 @@
+# Emacs
+*~
+\#*\#
+
+*.elc
+
+# el-get
+/el-get/
