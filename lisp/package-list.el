@@ -3,9 +3,6 @@
 (el-get-bundle spaceline)
 (el-get-bundle ryuslash/mode-icons)
 
-;; Split init file.
-(el-get-bundle init-loader)
-
 ;; keybind
 (el-get-bundle bind-key)
 (el-get-bundle ddskk)
@@ -25,5 +22,8 @@
 
 ;; web
 (el-get-bundle web-mode)
+
+;; Split init file.
+(el-get-bundle init-loader)
 
 (provide 'package-list)
