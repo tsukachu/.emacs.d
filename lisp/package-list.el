@@ -23,4 +23,7 @@
 ;; python
 (el-get-bundle jedi)
 
+;; web
+(el-get-bundle web-mode)
+
 (provide 'package-list)
