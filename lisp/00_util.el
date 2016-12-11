@@ -26,3 +26,6 @@
 
 ;; revert buffer
 (global-auto-revert-mode 1)
+
+;; indent
+(setq-default tab-width 4 indent-tabs-mode nil)
