@@ -13,6 +13,7 @@
 ;; interface
 (el-get-bundle helm)
 (el-get-bundle anzu)
+(el-get-bundle highlight-symbol)
 
 ;; support
 (el-get-bundle auto-complete)
