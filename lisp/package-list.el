@@ -1,7 +1,6 @@
 ;; spacemacs like
 (el-get-bundle spacemacs-theme)
 (el-get-bundle spaceline)
-(el-get-bundle ryuslash/mode-icons)
 
 ;; keybind
 (el-get-bundle bind-key)
