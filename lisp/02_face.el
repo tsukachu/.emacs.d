@@ -13,5 +13,8 @@
                     :foreground "DeepSkyBlue"
                     :underline t)
 
+;; parenthesis
+(show-paren-mode t)
+
 ;; screen size
 (set-frame-parameter nil 'fullscreen 'maximized)
