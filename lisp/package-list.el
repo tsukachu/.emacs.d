@@ -20,6 +20,10 @@
 ;; python
 (el-get-bundle jedi)
 
+;; clojure
+(el-get-bundle clojure-mode)
+(el-get-bundle paredit)
+
 ;; web
 (el-get-bundle web-mode)
 
