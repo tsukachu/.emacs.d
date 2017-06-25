@@ -27,6 +27,9 @@
 ;; web
 (el-get-bundle web-mode)
 
+;; yaml
+(el-get-bundle yaml-mode)
+
 ;; Split init file.
 (el-get-bundle init-loader)
 
