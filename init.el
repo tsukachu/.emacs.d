@@ -1,5 +1,6 @@
 (package-initialize)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")))
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 
 ;; Install if quelpa doesn't exist.
 (unless (require 'quelpa nil t)
@@ -9,6 +10,8 @@
 
 ;; packages
 (quelpa 'anzu :stable t)
+(quelpa 'cider :stable t)
+(quelpa 'clojure-mode :stable t)
 (quelpa 'company :stable t)
 (quelpa 'company-jedi :stable t)
 (quelpa 'company-quickhelp :stable t)
@@ -20,6 +23,7 @@
 (quelpa 'highlight-symbol :stable t)
 (quelpa 'init-loader :stable t)
 (quelpa 'jedi-core :stable t)
+(quelpa 'paredit :stable t)
 (quelpa 'python-mode :stable t)
 (quelpa 'spacemacs-theme)
 (quelpa 'spaceline :stable t)
