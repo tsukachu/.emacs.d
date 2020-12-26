@@ -140,6 +140,11 @@
   (setq skk-sticky-key ";")
   (setq skk-show-mode-show t))
 
+(use-package editorconfig
+  :config
+  (editorconfig-mode t)
+  :ensure t)
+
 (use-package elpy
   ;; NOTE Python IDE
   :after (f)
@@ -272,6 +277,12 @@
   ;; NOTE スペルチェック / aspell をインストールしておく必要がある
   :config
   (setq ispell-local-dictionary "en"))
+
+(use-package json-mode
+  :config
+  (setq js-indent-level 2)
+  :ensure t
+  :mode "\\.json\\'")
 
 (use-package rainbow-delimiters
   ;; NOTE 括弧に色付けする
