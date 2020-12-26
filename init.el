@@ -311,12 +311,19 @@
   ;; NOTE Frontend
   :config
   (setq web-mode-engines-alist '(("django" . "\\.html?\\'")))
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-style-padding 0)
+  (setq web-mode-script-padding 0)
   ;; highlight-symbol を使わずに web-mode のハイライトを使う
   (setq web-mode-enable-current-element-highlight t)
   (set-face-background 'web-mode-current-element-highlight-face "gray25")
   :ensure t
   :hook (web-mode-hook . (lambda () (highlight-symbol-mode 0)))
-  :mode "\\.html?\\'")
+  :mode ("\\.html?\\'"
+         "\\.js\\'"
+         "\\.vue\\'"))
 
 (use-package whitespace
   ;; NOTE スペースとタブを可視化
