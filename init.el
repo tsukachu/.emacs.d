@@ -310,6 +310,9 @@
   :config
   (smartparens-global-mode t)
   (show-smartparens-global-mode t)
+
+  ;; ペアが自動挿入された時のハイライトを OFF にする
+  (setq sp-highlight-pair-overlay nil)
   :ensure t)
 
 (use-package vscode-dark-plus-theme
