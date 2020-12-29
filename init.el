@@ -354,6 +354,10 @@
   ;; company の設定で切り替えるので global-whitespace-mode を使わない
   :hook (prog-mode . whitespace-mode))
 
+(use-package yaml-mode
+  :ensure t
+  :mode "\\.ya?ml\\'")
+
 (provide 'init)
 
 ;;; init.el ends here
