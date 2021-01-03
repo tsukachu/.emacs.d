@@ -4,7 +4,7 @@
 
 ;; Author: Tsukasa NAKATANI <concon.ch.1543@gmail.com>
 ;; Maintainer: Tsukasa NAKATANI <concon.ch.1543@gmail.com>
-;; Version: 1.0.0
+;; Version: 1.1.0
 ;; URL: https://github.com/tsukachu/.emacs.d
 
 ;;; Commentary:
@@ -202,7 +202,7 @@
                       :underline nil)
   (set-face-attribute 'flyspell-incorrect nil
                       :underline '(:color "green" :style wave))
-  :hook (prog-mode . flyspell-mode))
+  :hook ((text-mode prog-mode) . flyspell-mode))
 
 (use-package flyspell-correct
   ;; NOTE flyspell-correct-ido を使ってスペルチェックを ido のインターフェイスで表示させる
@@ -222,15 +222,15 @@
   ;; デフォルトの ?\x2502 だと表示がズレる
   (setq highlight-indent-guides-character ?\x007C)
   :ensure t
-  :hook (prog-mode . highlight-indent-guides-mode))
+  :hook ((text-mode prog-mode) . highlight-indent-guides-mode))
 
 (use-package highlight-symbol
   ;; NOTE シンボルをハイライト / シンボル間を移動
   :config
   (setq highlight-symbol-idle-delay 0.2)
   :ensure t
-  :hook ((prog-mode . highlight-symbol-mode)
-         (prog-mode . highlight-symbol-nav-mode)))
+  :hook (((text-mode prog-mode) . highlight-symbol-mode)
+         ((text-mode prog-mode) . highlight-symbol-nav-mode)))
 
 (use-package hiwin
   ;; NOTE 非アクティブなバッファを可視化
@@ -248,7 +248,7 @@
   (set-face-attribute 'hl-line nil
                       :background nil
                       :underline "gray25")
-  :hook (prog-mode . hl-line-mode))
+  :hook ((text-mode prog-mode) . hl-line-mode))
 
 (use-package ido
   ;; NOTE
@@ -352,7 +352,7 @@
                       :background nil
                       :foreground "gray25")
   ;; company の設定で切り替えるので global-whitespace-mode を使わない
-  :hook (prog-mode . whitespace-mode))
+  :hook ((text-mode prog-mode) . whitespace-mode))
 
 (use-package yaml-mode
   :ensure t
