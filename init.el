@@ -4,7 +4,7 @@
 
 ;; Author: Tsukasa NAKATANI <concon.ch.1543@gmail.com>
 ;; Maintainer: Tsukasa NAKATANI <concon.ch.1543@gmail.com>
-;; Version: 1.1.0
+;; Version: 1.2.0
 ;; URL: https://github.com/tsukachu/.emacs.d
 
 ;;; Commentary:
@@ -139,6 +139,11 @@
   ;; :config だと効かなかったので :init に書くことに
   (setq skk-sticky-key ";")
   (setq skk-show-mode-show t))
+
+(use-package dockerfile-mode
+  ;; NOTE Dockerfile 用
+  :ensure t
+  :mode "Dockerfile\\'")
 
 (use-package editorconfig
   :config
