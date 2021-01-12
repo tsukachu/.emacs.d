@@ -4,7 +4,7 @@
 
 ;; Author: Tsukasa NAKATANI <concon.ch.1543@gmail.com>
 ;; Maintainer: Tsukasa NAKATANI <concon.ch.1543@gmail.com>
-;; Version: 1.2.0
+;; Version: 1.2.1
 ;; URL: https://github.com/tsukachu/.emacs.d
 
 ;;; Commentary:
@@ -95,7 +95,7 @@
   (global-anzu-mode t))
 
 (use-package bind-key
-  ;; キーバインド / use-package と同時にインストールされるので :ensure t はいらない
+  ;; NOTE キーバインド / use-package と同時にインストールされるので :ensure t はいらない
   :bind* (("C-h" . delete-backward-char)
           ("M-h" . backward-kill-word)
           ("C-?" . help-command)))
@@ -146,6 +146,7 @@
   :mode "Dockerfile\\'")
 
 (use-package editorconfig
+  ;; NOTE editorconfig
   :config
   (editorconfig-mode t)
   :ensure t)
@@ -284,6 +285,7 @@
   (setq ispell-local-dictionary "en"))
 
 (use-package json-mode
+  ;; NOTE JSON 用
   :config
   (setq js-indent-level 2)
   :ensure t
@@ -360,6 +362,7 @@
   :hook ((text-mode prog-mode) . whitespace-mode))
 
 (use-package yaml-mode
+  ;; NOTE YAML 用
   :ensure t
   :mode "\\.ya?ml\\'")
 
