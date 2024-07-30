@@ -23,6 +23,23 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;;;; Initialize straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
 ;;;; Customization
 ;;   -------------
 
@@ -131,6 +148,20 @@
   :init
   (company-quickhelp-mode t))
 
+(use-package copilot
+  ;; NOTE GitHub Copilot(非公式)
+
+  ;; Installation Memo:
+  ;; 1. M-x copilot-install-server を実行する
+  ;; 2-a. *scratch* バッファーに切り替える
+  ;; 2-b. `(setq copilot-node-executable (executable-find "node"))` を入力後に Ctrl-j
+  ;; 2-c. M-x describe-variable で copilot-node-executable が変更されていることを確認する
+  ;; 3. M-x copilot-login を実行する
+
+  :ensure t
+  :hook (prog-mode . copilot-mode)
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
 (use-package dockerfile-mode
   ;; NOTE Dockerfile 用
   :ensure t
@@ -169,6 +200,7 @@
   ;; NOTE shell と環境変数を共有する
   :config
   (exec-path-from-shell-initialize)
+  (add-to-list 'exec-path "~/.nodenv/shims")
   :ensure t
   :if (memq window-system '(mac ns x)))
 
@@ -315,10 +347,7 @@
 
 (use-package tide
   ;; NOTE TypeScript IDE
-  :after (typescript-mode company flycheck)
-  :config
-  ;; nodenv のパスを追加する
-  (add-to-list 'exec-path "~/.nodenv/shims")
+  :after (company exec-path-from-shell flycheck typescript-mode)
   :ensure t
   :hook ((typescript-mode . tide-setup)
          (typescirpt-mode . tide-hl-indentifier-mode)
