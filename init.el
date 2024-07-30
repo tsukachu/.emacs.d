@@ -131,15 +131,6 @@
   :init
   (company-quickhelp-mode t))
 
-(use-package ddskk
-  ;; NOTE IME
-  :bind ("C-x C-j" . skk-mode)
-  :ensure t
-  :init
-  ;; :config だと効かなかったので :init に書くことに
-  (setq skk-sticky-key ";")
-  (setq skk-show-mode-show t))
-
 (use-package dockerfile-mode
   ;; NOTE Dockerfile 用
   :ensure t
@@ -221,14 +212,14 @@
   ;; NOTE
   :after (flyspell-correct))
 
-(use-package highlight-indent-guides
-  ;; NOTE インデントを可視化
-  :config
-  (setq highlight-indent-guides-method 'character)
-  ;; デフォルトの ?\x2502 だと表示がズレる
-  (setq highlight-indent-guides-character ?\x007C)
-  :ensure t
-  :hook ((text-mode prog-mode) . highlight-indent-guides-mode))
+;; (use-package highlight-indent-guides
+;;   ;; NOTE インデントを可視化
+;;   :config
+;;   (setq highlight-indent-guides-method 'character)
+;;   ;; デフォルトの ?\x2502 だと表示がズレる
+;;   (setq highlight-indent-guides-character ?\x007C)
+;;   :ensure t
+;;   :hook ((text-mode prog-mode) . highlight-indent-guides-mode))
 
 (use-package highlight-symbol
   ;; NOTE シンボルをハイライト / シンボル間を移動
@@ -321,6 +312,24 @@
   ;; ペアが自動挿入された時のハイライトを OFF にする
   (setq sp-highlight-pair-overlay nil)
   :ensure t)
+
+(use-package tide
+  ;; NOTE TypeScript IDE
+  :after (typescript-mode company flycheck)
+  :config
+  ;; nodenv のパスを追加する
+  (add-to-list 'exec-path "~/.nodenv/shims")
+  :ensure t
+  :hook ((typescript-mode . tide-setup)
+         (typescirpt-mode . tide-hl-indentifier-mode)
+         (before-save . tide-format-before-save)))
+
+(use-package typescript-mode
+  ;; NOTE TypeScript
+  :config
+  (setq typescript-indent-level 2)
+  :ensure t
+  :mode "\\.ts\\'")
 
 (use-package vscode-dark-plus-theme
   ;; NOTE カラーテーマ
