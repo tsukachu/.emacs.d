@@ -157,7 +157,11 @@
   ;; 2-b. `(setq copilot-node-executable (executable-find "node"))` を入力後に Ctrl-j
   ;; 2-c. M-x describe-variable で copilot-node-executable が変更されていることを確認する
   ;; 3. M-x copilot-login を実行する
+  :config
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
 
+  (setq warning-suppress-log-types '((copilot copilot-exceeds-max-char)))
   :ensure t
   :hook (prog-mode . copilot-mode)
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
